@@ -1,0 +1,56 @@
+media:
+  input: assets/images
+  output: /assets/images
+
+content:
+  - name: posts
+    label: Posts
+    type: collection
+    path: _posts
+    filename: "{year}-{month}-{day}-{primary}.md"
+    view:
+      fields: [title, date, published]
+      primary: title
+      sort: [date, title]
+      default:
+        sort: date
+        order: desc
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: description
+        label: Summary
+        description: One or two sentences shown on the home page and in link previews.
+        type: text
+      - name: date
+        label: Date
+        type: date
+      - name: image
+        label: Cover image
+        type: image
+      - name: published
+        label: Published
+        description: Turn off to keep this post as a draft.
+        type: boolean
+        default: true
+      - name: body
+        label: Post
+        type: rich-text
+        options:
+          format: markdown
+
+  - name: about
+    label: About page
+    type: file
+    path: about.md
+    fields:
+      - name: title
+        label: Title
+        type: string
+      - name: body
+        label: Content
+        type: rich-text
+        options:
+          format: markdown
